@@ -19,27 +19,44 @@ namespace Prac1
         public MainWindow()
         {
             InitializeComponent();
-            //Список элементов для вывода в ListBox или ListView
-            Book.ItemsSource = new List<Books>()
-            {
-                new Books{id = 1, title = "Книга 1"},
-                new Books{id = 2, title = "Книга 2"}
-            };
+            Persons.ItemsSource = new List<Person>()
+           {
+             new Person{Id = 1, Name = "Andrey", Age = 33, Description = "dsadsadeww"},
+             new Person{Id = 1, Name = "Andrey", Age = 33, Description = "dsadsadeww"},
+             new Person{Id = 1, Name = "Andrey", Age = 33, Description = "dsadsadeww"},
+             new Person{Id = 1, Name = "Andrey", Age = 33, Description = "dsadsadeww"},
+             new Person{Id = 1, Name = "Andrey", Age = 33, Description = "dsadsadeww"},
+             new Person{Id = 1, Name = "Andrey", Age = 33, Description = "dsadsadeww"},
+             new Person{Id = 1, Name = "Andrey", Age = 33, Description = "dsadsadeww"},
+             new Person{Id = 1, Name = "Andrey", Age = 33, Description = "dsadsadeww"},
+             new Person{Id = 2, Name = "Sergey", Age = 22, Description = "dfsfsdf"}
+           };
         }
 
-        //Метод уведомление о нажатии
         private void Btn1_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Вы нажали кнопку");
-            //if(TB1.Text == "")
-            //{
-            //    MessageBox.Show("Error");
-            //}
+            int scaler = 3;
+            Btn1.FontFamily = new FontFamily("Arial");
+            Btn1.FontSize = Btn1.FontSize += scaler;
+            MessageBox.Show("Кнопка нажата");
         }
-        //Метод закрывающий приложение
-        private void ExitBtnClick(object sender, RoutedEventArgs e)
+
+        private void Btn2_Click(object sender, RoutedEventArgs e)
         {
-            System.Windows.Application.Current.Shutdown();
+            //Btn2.Visibility = Visibility.Hidden;
+            
+            Btn2.Background = new SolidColorBrush(Colors.Yellow);
+            if(TB1.Text == "")
+            {
+                
+                MessageBox.Show("Error", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                Btn2.FontFamily = new FontFamily("Arial");
+                MessageBox.Show("Button Have Sumbols", "Succsess", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                Btn2.Content = TB1.Text;
+            }
         }
     }
 }

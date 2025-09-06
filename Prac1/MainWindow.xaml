@@ -29,29 +29,31 @@
                 <Button Content="Количество книг" Background="Transparent" BorderThickness="0" BorderBrush="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center" MinHeight="70px" MinWidth="120px"/>
             </Border>
             <!--Это обычные кнопки с атрибутами на изменение шрифта без скругленных углов-->
-            <Button Content="Список книг" Background="Transparent" BorderThickness="2" BorderBrush="Black" HorizontalAlignment="Center" VerticalAlignment="Center" MinHeight="70px" MinWidth="120px"/>
-            <Button x:Name="ExitBtn" FontStyle="Italic" Content="Выход" HorizontalAlignment="Center" VerticalAlignment="Center" Click="ExitBtnClick" MinHeight="70px" MinWidth="120px" BorderBrush="Black"  BorderThickness="2"/>
+            <Button Content="Список книг" x:Name="Btn1" Click="Btn1_Click" Background="Transparent" BorderThickness="2" BorderBrush="Black" HorizontalAlignment="Center" VerticalAlignment="Center" MinHeight="70px" MinWidth="120px"/>
+            <Button x:Name="Btn2" FontStyle="Italic" Content="Нажми меня" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Btn2_Click" MinHeight="70px" MinWidth="120px" BorderBrush="Black"  BorderThickness="2"/>
+            <TextBox x:Name="TB1"/>
         </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="1">
-            <Label Content="Взаимодействие со списком"/>
+            <TextBlock TextWrapping="Wrap"> Взаимодействие со списком</TextBlock>
             <!--x:Name нужен для использования Графического компонента в коде(наделения его функциями или атрибутами)-->
             <!--Атрибут Click нужен для вызова метода(то, что должна сделать кнопка)-->
             <Button x:Name="BtnAdd" MinHeight="30px" Content="Добавить" ToolTip="Добавление новой книги" MinWidth="100px" Margin="10,10,10,10" HorizontalAlignment="Left" Click="Btn1_Click"/>
             <Button MinHeight="30px" Content="Изменить" ToolTip="Изменение книги которая находится в списке" MinWidth="100px" Margin="10,10,10,10" HorizontalAlignment="Left"/>
             <Button MinHeight="30px" Content="Удалить" ToolTip="Удаление книги из списка" MinWidth="100px" Margin="10,10,10,10" HorizontalAlignment="Left"/>
         </StackPanel>
-        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
-            <!--Margin это атрибут отступа компонента от краев экрана или других компонентов, это нужно для того чтобы компоненты не "Слипались" друг с другом или же не "Прилепали" к краю экрана-->
-            <Border  Margin="10,10,10,10" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="20" BorderThickness="2" BorderBrush="Black">
-                <TextBlock MinHeight="400px" MinWidth="400px" Margin="10,10,10,10">Content box</TextBlock>
-            </Border>
-            <!--Если в ваши элементы вдруг занимают больше места чем есть на окне, оборачивайте элемент в ScrollViewer-->
-            <ScrollViewer>
-                <ListBox x:Name="Book" MinHeight="400px" MinWidth="400px" DisplayMemberPath="title"></ListBox>
-            </ScrollViewer>
-        </StackPanel>
+       
         <!--Если путь указан верно, но картинка все равно не отображается,не забудьте перейти в свойтва картинки и в действиях при сборке поставить Ресурс;)-->
-        <Image Source="/cat.png"/>
+        <!--<Image Source="/cat.png"/>-->
+        <ScrollViewer Grid.Row="1" Grid.Column="1">
+            <DataGrid Margin="20,20,20,20" MaxHeight="500px" Grid.Row="1" Grid.Column="1" x:Name="Persons" AutoGenerateColumns="False" ItemsSource="{Binding Person}" MinColumnWidth="35">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding Path = Id}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Path = Name}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Age" Binding="{Binding Path = Age}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Description" Binding="{Binding Path = Description}"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </ScrollViewer>
 
     </Grid>
 </Window>
