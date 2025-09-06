@@ -1,0 +1,57 @@
+﻿<Window x:Class="Prac1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Prac1"
+        mc:Ignorable="d"
+        Title="Prac" Height="1080" Width="1920">
+    <!--Контейнер для компонентов, в нем должны лежать все обьекты!!!-->
+    <!--Еще один ВАЖНЫЙ момент, не задавайте обычные высоту и ширину, давайте компонентам MinHeight и MinWidth, чтобы компоненты отображались корректно на разных разрешениях-->
+    <Grid>
+        <!--Разбитие рабочего пространства на блоки(колонки и строки)-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+
+        <!--Панель для расположения элементов в столбец или строку-->
+        <StackPanel Name="Header" Orientation="Horizontal" Grid.Row="0" Grid.ColumnSpan="3" Background="LightGray">
+            <Label Content="Libary" FontFamily="Times New Roman" FontSize="36pt" FontStyle="Italic" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <!--Чтобы создать кнопку со скругленными углами нужно ее обернуть в компонент Border, а так же сделать толщину рамок у кнопки значением 0 и заливку бесцветной-->
+            <Border HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="20" BorderThickness="2" BorderBrush="Black">
+                <Button Content="Количество книг" Background="Transparent" BorderThickness="0" BorderBrush="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center" MinHeight="70px" MinWidth="120px"/>
+            </Border>
+            <!--Это обычные кнопки с атрибутами на изменение шрифта без скругленных углов-->
+            <Button Content="Список книг" Background="Transparent" BorderThickness="2" BorderBrush="Black" HorizontalAlignment="Center" VerticalAlignment="Center" MinHeight="70px" MinWidth="120px"/>
+            <Button x:Name="ExitBtn" FontStyle="Italic" Content="Выход" HorizontalAlignment="Center" VerticalAlignment="Center" Click="ExitBtnClick" MinHeight="70px" MinWidth="120px" BorderBrush="Black"  BorderThickness="2"/>
+        </StackPanel>
+        <StackPanel Grid.Column="0" Grid.Row="1">
+            <Label Content="Взаимодействие со списком"/>
+            <!--x:Name нужен для использования Графического компонента в коде(наделения его функциями или атрибутами)-->
+            <!--Атрибут Click нужен для вызова метода(то, что должна сделать кнопка)-->
+            <Button x:Name="BtnAdd" MinHeight="30px" Content="Добавить" ToolTip="Добавление новой книги" MinWidth="100px" Margin="10,10,10,10" HorizontalAlignment="Left" Click="Btn1_Click"/>
+            <Button MinHeight="30px" Content="Изменить" ToolTip="Изменение книги которая находится в списке" MinWidth="100px" Margin="10,10,10,10" HorizontalAlignment="Left"/>
+            <Button MinHeight="30px" Content="Удалить" ToolTip="Удаление книги из списка" MinWidth="100px" Margin="10,10,10,10" HorizontalAlignment="Left"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
+            <!--Margin это атрибут отступа компонента от краев экрана или других компонентов, это нужно для того чтобы компоненты не "Слипались" друг с другом или же не "Прилепали" к краю экрана-->
+            <Border  Margin="10,10,10,10" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="20" BorderThickness="2" BorderBrush="Black">
+                <TextBlock MinHeight="400px" MinWidth="400px" Margin="10,10,10,10">Content box</TextBlock>
+            </Border>
+            <!--Если в ваши элементы вдруг занимают больше места чем есть на окне, оборачивайте элемент в ScrollViewer-->
+            <ScrollViewer>
+                <ListBox x:Name="Book" MinHeight="400px" MinWidth="400px" DisplayMemberPath="title"></ListBox>
+            </ScrollViewer>
+        </StackPanel>
+        <!--Если путь указан верно, но картинка все равно не отображается,не забудьте перейти в свойтва картинки и в действиях при сборке поставить Ресурс;)-->
+        <Image Source="/cat.png"/>
+
+    </Grid>
+</Window>
