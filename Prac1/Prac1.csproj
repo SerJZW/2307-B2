@@ -13,7 +13,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="pic.jpg" />
+    <Resource Include="Source\pic.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Source\Images\" />
+    <Folder Include="Source\Fonts\" />
   </ItemGroup>
 
 </Project>
