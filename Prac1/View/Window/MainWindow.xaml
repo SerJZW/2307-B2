@@ -37,9 +37,9 @@
             <TextBlock TextWrapping="Wrap"> Взаимодействие со списком</TextBlock>
             <!--x:Name нужен для использования Графического компонента в коде(наделения его функциями или атрибутами)-->
             <!--Атрибут Click нужен для вызова метода(то, что должна сделать кнопка)-->
-            <Button x:Name="BtnAdd" MinHeight="30px" Content="Добавить" ToolTip="Добавление новой книги" MinWidth="100px" Margin="10,10,10,10" HorizontalAlignment="Left" Click="Btn1_Click"/>
-            <Button MinHeight="30px" Content="Изменить" ToolTip="Изменение книги которая находится в списке" MinWidth="100px" Margin="10,10,10,10" HorizontalAlignment="Left"/>
-            <Button MinHeight="30px" Content="Удалить" ToolTip="Удаление книги из списка" MinWidth="100px" Margin="10,10,10,10" HorizontalAlignment="Left"/>
+            <Button x:Name="BtnAdd" MinHeight="30px" Content="Добавить" ToolTip="Добавление новой книги" MinWidth="100px" Margin="10,10,10,10" HorizontalAlignment="Left" Style="{StaticResource BtnStyle}" Click="Btn1_Click"/>
+            <Button MinHeight="30px" Content="Изменить" ToolTip="Изменение книги которая находится в списке" MinWidth="100px" Margin="10,10,10,10" Style="{StaticResource BtnStyle}" HorizontalAlignment="Left"/>
+            <Button MinHeight="30px" Content="Удалить" ToolTip="Удаление книги из списка" MinWidth="100px" Margin="10,10,10,10" HorizontalAlignment="Left" Style="{StaticResource BtnStyle}"/>
         </StackPanel>
        
         <!--Если путь указан верно, но картинка все равно не отображается,не забудьте перейти в свойтва картинки и в действиях при сборке поставить Ресурс;)-->
@@ -47,7 +47,7 @@
         <ScrollViewer Grid.Row="1" Grid.Column="1">
             <DataGrid Margin="20,20,20,20" MaxHeight="500px" Grid.Row="1" Grid.Column="1" x:Name="Persons" AutoGenerateColumns="False" ItemsSource="{Binding Person}" MinColumnWidth="35">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Binding="{Binding Path = Id}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Номер" Binding="{Binding Path = Id}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Name" Binding="{Binding Path = Name}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Age" Binding="{Binding Path = Age}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Description" Binding="{Binding Path = Description}"></DataGridTextColumn>
